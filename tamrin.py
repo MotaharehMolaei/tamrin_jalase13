@@ -12,11 +12,11 @@ product_list = [
 # اجازه ی استفاده از for ندارید
 
 # تبدیل price ها به عدد
-def convert_price_to_float(product):
+def cast_price_to_float(product):
     product["price"] = float(product["price"])
     return product
 
-converted_price = list(map(convert_price_to_float,product_list))
+converted_price = list(map(cast_price_to_float,product_list))
 print(converted_price)
 
 # اضافه کردن total به هر دیکشنری
@@ -41,14 +41,22 @@ print(final_name)
 def under_5000(product):
     return product["quantity"] * product["price"] < 5000
 
-under_list = list(filter(under_5000,product_list))
-print(under_list)
+def get_name(product):
+    return product["name"].capitalize()
+
+filter_products = list(filter(under_5000,product_list))
+product_names = list(map(get_name,filter_products))
+print(product_names)
 
 # لیست اسم کالاهای با مجموع بیشتر از 5000
 def upper_5000(product):
     return product["quantity"] * product["price"] > 5000
 
-upper_list = list(filter(upper_5000,product_list))
-print(upper_list)
+filter_products = list(filter(upper_5000,product_list))
+product_names = list(map(get_name,filter_products))
+print(product_names)
 
 # جمع کل فاکتور
+def get_total(product):
+    return product["total"]
+products_with_total = list(map(add_total, product_list))
