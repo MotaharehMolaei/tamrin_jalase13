@@ -53,10 +53,8 @@ def upper_5000(product):
     return product["quantity"] * product["price"] > 5000
 
 filter_products = list(filter(upper_5000,product_list))
-product_names = list(map(get_name,filter_products))
-print(product_names)
+product_name = list(map(get_name,filter_products))
+print(product_name)
 
 # جمع کل فاکتور
-def get_total(product):
-    return product["total"]
-products_with_total = list(map(add_total, product_list))
+
